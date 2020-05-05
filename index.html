@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css.css">
+    <title>Генератор этикеток со штрихкодом для поставщиков OZON</title>
+  </head>
+<body>
+<div class="container-fluid">
+	<!-- Header -->
+	<div class="row p-3 shapka">
+		<div class="col"><strong>MR SHTRIHER</strong></div>
+		<div class="col text-right"><strong>Связаться с нами</strong></div>
+	</div>
+	<!-- Шапка -->
+	<div class="row p-5 align-items-center shapka">
+		<div class="col">
+		  <div class="d-flex">
+			<div class="d2"><h1 class="pl-5">Генератор<br>этикеток и штрих-кодов<br>для продавцов OZON</h1></div>
+		 </div>
+		</div>
+		<div class="col">
+			<div class="d-flex justify-content-center">
+			<img src="logo.png" width="70%"></div>
+		</div>
+		
+	</div>
+	
+	<!-- Блок с формой заполнения -->
+	<div class="row p-5">
+		<div class="col col-md-2"></div>
+		<div class="col-11 col-md-5">
+			<form>
+        		<h3>Введите номер штрихкода:</h3>
+        		<span id="hintSht"></span><br>
+        		<input type="text" name="number" id="number" placeholder="Номер ean13"><br>
+        		<input class="pl-6" type="button" value="Сгенерировать только штрихкод" onclick="shtriher(document.getElementById('number'))">
+        		<br>
+     		</form>
+     		 <br><br>
+      		<form action="" method="post" name="test" id="form">
+      			<h3>Введите данные для этикетки:</h3>
+      			<span id="hints"></span><br>
+        		<label for="name"><strong>Наименование организации:</strong></label><br>
+        		<input type="text" name="name" placeholder="Организации" id="name"><br>
+       			
+       			<label for="product"><strong>Наименование продукта:</strong></label><br>
+        		<input type="text" name="product" placeholder="Имя продукции" id="product"><br>
+        		
+        		<label for="sku"><strong>Артикул:</strong></label><br>
+        		<input type="text" name="sku" placeholder="Артикул" id="sku"><br>
+        		
+        		<label for="description"><strong>Описание:</strong></label><br>
+        		<textarea name="description" placeholder="Описание" id="description"></textarea><br>
+        		<p><i>(Добавьте описание для продукта (в произвольной форме))</i></p>
+        		
+        		<input class="pl-6" type="button" value="Сгенерировать этикетку" onclick="generator(document.getElementById('form'))">
+        		
+    
+           	</form>
+		</div>
+		<div class="col-11 col-md-4">
+			<h3>Инструкция:</h3>
+			<ul>
+				<li>Обязательно введите номер штрихкода в формате EAN13</li>
+				<li>Вы можете сгенировать отдельно штрихкод в формате PNG и отдельно этикетку</li>
+				<li>Для того, чтобы сгенерировать этикетку нужно ввести <strong>обязательно</strong> номер штрихкода и <strong>минимум</strong> одно поле с данными</li>
+				<li>Размер этикетки по стандартам OZON - 125х80 мм</li>
+				<li>Общее количество символов на все поля этикитки - 200 символов при минимальном размере шрифта - 10px</li>
+			</ul>
+			<p><i>Пример штрихкода:</i></p>
+			<img width="80%" src="shtrih.png">
+			<p><i>Пример этикетки:</i></p>
+			<img width="80%" src="etick.png">
+		</div>
+		<div class="col"></div>
+	</div>
+	<!-- Блок с результирующими картинками -->
+	<div class="row p-5" id="resultBlock">
+		
+	</div>
+	<!-- Footer -->
+	<div class="row p-3 footer">
+		<div class="col">Copyright 2020</div>
+	</div>
+</div>
+<script src="jss.js"></script>
+</body>
+</html>

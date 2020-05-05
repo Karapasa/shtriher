@@ -1,6 +1,8 @@
+#!/usr/bin/python3
 from PIL import Image, ImageDraw, ImageFont
 from shrich import Code
 
+def_number = '123412412341'
 compy = 'Рога и компыта'
 sku = 'A1234B'
 name = 'Рюкзак Космос'
@@ -8,9 +10,10 @@ field = 'Принт - Сатурн'
 
 
 class Etich():
-    font = ImageFont.truetype("arial.ttf", size=18, encoding='utf-8')
+    font = ImageFont.truetype("DejaVuSansMono.ttf", size=18, encoding='utf-8')
 
-    def __init__(self, compy, name, sku, field, view = 'ver', width = 120, height = 75):
+    def __init__(self, number, compy, name, sku, field, view = 'ver', width = 120, height = 75):
+        self.number = number
         self.view = view
         self.width = width
         self.height = height
@@ -27,7 +30,7 @@ class Etich():
     def get_field(self):
         return 'Описание: ' + self.field
     def get_shtrich(self):
-        a1 = Code()
+        a1 = Code(self.number)
         a1.save_code()
 
     def create_etich(self):
@@ -39,14 +42,14 @@ class Etich():
             idraw.text((x, y), text, font=self.font, fill='black')
             y += 25
         self.get_shtrich()
-        sht = Image.open('testname.png', 'r').resize((250, 120))
+        sht = Image.open('/var/www/html/label/img/'+self.number+'_sht.png', 'r').resize((250, 120))
 
         img.paste(sht, (102, 150))
         return img
 
     def save_etich(self):
         img = self.create_etich()
-        img.save('test_etick.png')
-        print('Этикетка сохранена')
+        img.save('/var/www/html/label/img/'+self.number+'_et.png')
 if __name__ == '__main__':
-    a2 = Etich(compy, name, sku, field).save_etich()
+    a2 = Etich(def_number, compy, name, sku, field).save_etich()
+    print('Этикетка и штрихкод сохранена')

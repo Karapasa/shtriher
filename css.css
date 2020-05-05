@@ -1,0 +1,32 @@
+@import 'https://fonts.googleapis.com/css?family=Merriweather';
+body {
+	background-color: #ffffff;
+}
+
+input {
+  display: block;
+  padding: 0 20px;
+  width: 60%;
+  line-height: 50px;
+  border-style: solid;
+  border-width: 2px 2px;
+  border-radius: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+textarea {
+  display: block;
+  padding: 0 20px;
+  width: 60%;
+  line-height: 50px;
+  border-style: solid;
+  border-width: 2px 2px;
+  border-radius: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+.shapka {
+	background-color: #9bc7f7;
+}
+.footer {
+	background-color: #444444;
+	color: white;
+}

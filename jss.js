@@ -1,25 +1,20 @@
 function shtriher (number) {
 	clearHTML ();
 	var numberSht = number.value;
-	if (numberSht == "") {
-		document.getElementById("hintSht").innerHTML = 'ВЫ НЕ ВВЕЛИ НОМЕР ШТРИХКОДА!';
+	if (testNumber(numberSht)) {
+		sendReq(numberSht);
+	    setTimeout(function() {
+	        resultHtml(1, numberSht);
+	    }, 700);
+		getCoords();
 	}
-	sendReq(numberSht);
-    setTimeout(function() {
-        resultHtml(1, numberSht);
-    }, 700);
-//	resultHtml (1, numberSht);
-	getCoords();
 }
 
 
 function generator (form) {
 	clearHTML ();
 	var numberEAN =document.getElementById('number').value;
-	if (numberEAN == "") {
-		document.getElementById("hintSht").innerHTML = 'ВЫ НЕ ВВЕЛИ НОМЕР ШТРИХКОДА!';
-	}
-
+	
 	var name = form.name.value;
 	var product = form.product.value;
 	var sku = form.sku.value;
@@ -34,12 +29,11 @@ function generator (form) {
 		}
 	}
 
-	if (finDatas.length > 0 && numberEAN != '') {
+	if (finDatas.length > 0 && testNumber(numberEAN)) {
 		sendReq (numberEAN, name, product, sku, description);
         setTimeout(function() {
             resultHtml(2, numberEAN);
         }, 700);
-	//	resultHtml (2, numberEAN);
 		getCoords ();
 	} else {
 		document.getElementById('hints').innerHTML = 'ВЫ НЕ ЗАПОЛНИЛИ НИ ОДНОГО ПОЛЯ!';
@@ -54,6 +48,20 @@ function clearHTML () {
 	}
 	if (hintEtick.textContent != '') {
 		hintEtick.innerHTML = "";
+	}
+}
+
+function testNumber (num) {
+	var a = Number (num);
+	if (num.length == 12 && Number.isInteger(a)) {
+		return True;
+	} else {
+		if (num = "") {
+			document.getElementById("hintSht").innerHTML = "ВЫ НЕ ВВЕЛИ НОМЕР ШТРИХКОДА!";
+			} else {
+			document.getElementById("hintSht").innerHTML = "Введите 12 чисел штрихкода, последний генерируется автоматически";
+		}
+		return False;
 	}
 }
 

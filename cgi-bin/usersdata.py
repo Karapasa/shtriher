@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from etich import Etich
 import cgi
-
+# Сбор данных из URL
 form = cgi.FieldStorage()
 number = form.getfirst('number')
 compy = ' '.join(form.getlist('compy'))
